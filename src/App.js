@@ -8,8 +8,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       year: 2022,
-      month: 5,
+      month: 4,
       day: 20,
+      dw:"FRI"
     };
   }
 
@@ -29,10 +30,12 @@ class App extends React.Component {
         month : month
     });
   }
-  changeday = (day) => {
-    console.log(day)
+  changeday = (day, dw) => {
+    let dws = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+    console.log(dws[dw])
     this.setState({
-        day : day
+        day : day,
+        dw : dws[dw],
     });
   }
 
@@ -40,7 +43,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Calendar year ={this.state.year} month = {this.state.month} changemonth = {this.changemonth} changeday = {this.changeday}/>
-        <Memo/>
+        <Memo dw = {this.state.dw} day ={this.state.day}/>
       </div>
     );
   }

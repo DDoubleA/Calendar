@@ -4,12 +4,13 @@ import c from 'calendar'
 
 function Day(props) {
     if(typeof props.value == "number" && props.value != 0){
+        let dw = props.value
         return (
             <button 
-            className="day" 
-            onClick={ props.onClick}
+            className="day"
+            onClick={props.onClick} 
             >
-            {props.value}
+            {dw} 
             </button>
         );
     }
@@ -18,7 +19,7 @@ function Day(props) {
             <div 
             className="day_nn" 
             >
-              {props.value == 0 ? "em" : props.value}
+              {props.value == 0 ? "ㅤ" : props.value}
             </div>
           );
         
@@ -32,7 +33,7 @@ function Week(props) {
             return <Day
                 key = {idx}
                 value = {day}
-                onClick = {() => props.onClick(day)}
+                onClick = {() => {props.onClick(day,idx)}}
             />
         }
         )
@@ -50,7 +51,7 @@ class Calendar extends React.Component {
         return <Week
         key ={idx}
         value = {week}
-        onClick = {(day) => this.props.changeday(day) }
+        onClick = {(day,idx1) => this.props.changeday(day,idx1) }
         />
     }
     
@@ -70,10 +71,10 @@ class Calendar extends React.Component {
     }
 
     render() {
-        const days = ["SUN", "MON", "TUE", "WES", "THU", "FRI", "SAT"]
+        const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
         let cal = new c.Calendar();
         let m = cal.monthDays(this.props.year, this.props.month);
-
+        
         return (
             <div className='calendar'>   
                 <div className='upperbar'>
