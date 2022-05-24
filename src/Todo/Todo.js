@@ -1,39 +1,29 @@
 import React from 'react'
 import './Todo.css'
 
-class Todo extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+function Todo(props) {
+  let id, text, time, date;
+  ({id, text, time, date } = props.todo)
+  
+  return (
+    <div>
+        <span> {time} </span>
+        <span> {text} </span>
+        <button> edit </button>
+        <button> delete </button>
+    </div>
+  );
+}
 
-    render() {
-      return (
-        <div>
-            <span> 22:00 </span>
-            <span> 일정 입니다. </span>
-            <button> edit </button>
-            <button> delete </button>
-        </div>
-        
-      );
-    }
-  }
-
-class Todos extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-        <div>
-            <Todo/>
-            <Todo/>
-            <Todo/>
-        </div>
-        
-        );
-    }
+function Todos (props) {
+  console.log("Helo")
+  console.log(props.todos)
+  return (
+  <div>
+      {props.todos.map((todo) => (<Todo key = {todo.id} todo = {todo}></Todo> ))}
+  </div>
+  
+  );
 }
   
   export default Todos

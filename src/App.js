@@ -17,8 +17,6 @@ class App extends React.Component {
     };
   }
 
-  
-
   changemonth = (value) => {
     let year = this.state.year;
     let month = this.state.month + value

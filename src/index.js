@@ -4,11 +4,11 @@ import { Provider } from 'react-redux';
 import App from './App';
 import './index.css';
 import { createStore } from 'redux';
-import { rootReducer } from './app/store';
-import { composeWithDevTools } from 'redux-devtools-extension';
+
+import todos from './app/todos.js'
 
 const container = document.getElementById('root');
-const store = createStore(rootReducer, composeWithDevTools())
+const store = createStore(todos)
 const root = createRoot(container);
 
 

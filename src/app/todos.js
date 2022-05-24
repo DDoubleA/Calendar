@@ -9,15 +9,15 @@ export const changeInput = input => ({
     input
 });
 
-let id = 1;
+let id = 3;
 
-export const insert = (text, time) =>({
+export const insert = (text, time, date) =>({
     type : INSERT,
     todo: {
         id : id++,
         text,
-        done : false,
-        time : time
+        time : time,
+        date : date
     }
 });
 
@@ -38,13 +38,13 @@ const initialState = {
     todos : [{
         id : 1,
         text : "제발성공",
-        done : false,
-        time : "22:00"
+        time : "22:00",
+        date : "2022-05-16"
     }, {
         id : 2,
         text : "제발성공해라",
-        done : false,
-        time : "23:00"
+        time : "23:00",
+        date : "2022-05-16"
     }]
 };
 
@@ -67,7 +67,10 @@ function todos(state = initialState, action){
                     todo.id === action.id ? {...todo, done :!todo.done } : todo 
                 )
             };
+        default:
+            return { ...state };
     }
+    
 }
 
 export default todos;
