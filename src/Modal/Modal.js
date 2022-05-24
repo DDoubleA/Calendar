@@ -9,7 +9,6 @@ const Modal = ({year, month, dw, day, close}) => {
   const [todotime, setTodoTime] = useState("");
   
   const dispatch = useDispatch();
-  let nextId = useRef(3);
 
   const onRemove = () => {
     setTodoText("");
@@ -25,12 +24,15 @@ const Modal = ({year, month, dw, day, close}) => {
   };
 
   const addTodo = () => {
+    if (todotime.length === 0) {
+      alert("시간을 입력해주세요!");
+      return;
+    }
     if (todotext.length === 0) {
       alert("내용을 입력해주세요!");
       return;
     }
     dispatch(insert(todotext, todotime, year+"-"+month+"-"+day));
-    nextId.current += 1;
     onRemove();
   };
 

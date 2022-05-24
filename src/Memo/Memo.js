@@ -3,12 +3,25 @@ import Todos from '../Todo/Todo.js'
 import './Memo.css'
 import ModalPortal from "../Modal/Portal.js";
 import Modal from "../Modal/Modal.js";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { clearall } from "../app/todos.js";
 
 function Memo(props) {
   const [isOpen,setIsOpen] = useState(false);
   const todos = useSelector((state) => state.todos);
   console.log(todos)
+
+  const dispatch = useDispatch();
+  
+
+  const deleteall = (date) => {
+    // console.log(date)
+    dispatch(clearall(date));
+  };
+
+  const todaytodo = todos.filter((todo)=>{
+    return todo.date == props.year+"-"+props.month+"-"+props.day})
+
 
   const handleClicked = () => {
     let wasOpen = isOpen
@@ -24,7 +37,7 @@ function Memo(props) {
         </div>
 
         <div className='memos'>
-            <Todos todos = {todos}/>
+            <Todos todos = {todaytodo}/>
         </div>
 
         <div className='buttons'>
@@ -33,7 +46,7 @@ function Memo(props) {
                 Add
             </button>
 
-            <button className='button'>
+            <button className='button' onClick={()=>deleteall(props.year+"-"+props.month+"-"+props.day)}>
                 Clear All
             </button>
 
