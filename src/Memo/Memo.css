@@ -1,13 +1,34 @@
 .memo {
-    width: 33%;
+    width: 33vw;
+    height: 95vh;
     float: right;
     text-align: center;
+    display:flex;
+    flex-direction: column;
+    /* justify-content:  space-between; */
   }
   
-  .selected{
-      font-size: 40px;
-      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-      text-align: left;
-      margin-left: 4%;
-      padding-top: 4%;
-  }
+.selected{
+    font-size: 3rem;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: left;
+    margin-left: 4%;
+    padding-top: 4%;
+    height: 10%;
+}
+
+.memos{
+    flex: 1;
+    height: 80%;
+}
+
+.buttons{
+    height: 10%;
+    display:flex;
+    justify-content:  space-evenly;
+}
+    
+.button{
+    width: 40%;
+    height: 50%;
+}

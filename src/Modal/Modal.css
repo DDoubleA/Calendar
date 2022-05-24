@@ -1,0 +1,21 @@
+.Background{ 
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  text-align: center;
+}
+
+.Content{
+  height: 30%;
+  width: 28vw;
+  margin-top: 40vh;
+  margin-left: 68vw;
+  position: relative;
+  overflow: scroll;
+  background: #FFFF00;
+}

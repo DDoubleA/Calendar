@@ -3,16 +3,21 @@ import Calendar from './Calendar/Calendar.js';
 import Memo from './Memo/Memo.js';
 import './App.css';
 
+
 class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
       year: 2022,
       month: 4,
       day: 20,
-      dw:"FRI"
+      dw:"FRI",
+      isOpen:false
     };
   }
+
+  
 
   changemonth = (value) => {
     let year = this.state.year;
@@ -30,9 +35,9 @@ class App extends React.Component {
         month : month
     });
   }
+
   changeday = (day, dw) => {
     let dws = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
-    console.log(dws[dw])
     this.setState({
         day : day,
         dw : dws[dw],
@@ -43,7 +48,8 @@ class App extends React.Component {
     return (
       <div className="App">
         <Calendar year ={this.state.year} month = {this.state.month} changemonth = {this.changemonth} changeday = {this.changeday}/>
-        <Memo dw = {this.state.dw} day ={this.state.day}/>
+        <Memo id = "memo" year ={this.state.year} month = {this.state.month} dw = {this.state.dw} day ={this.state.day}/>
+        
       </div>
     );
   }

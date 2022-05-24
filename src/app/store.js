@@ -1,7 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import todos from './todos.js'
 
-export const store = configureStore({
+export const rootReducer = combineReducers({
   reducer: {
-    // counter: counterReducer,
-  },
+    todos: todos
+  }
 });
